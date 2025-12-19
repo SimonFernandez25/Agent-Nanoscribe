@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Array of Cylinders
+% Objective: 63x
+% Each cylinder: height 5 µm, radius 1 µm
+% Center-to-center spacing: 5 µm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+var $objective = 63
+XOffset 0
+YOffset 0
+ZOffset 0
+PowerScaling 0.6
+LaserPower 40
+ScanSpeed 100
+FindInterfaceAt 0.5
+LineNumber 1
+local $rows = 5
+local $cols = 5
+local $pitch = 5.0
+local $xstart = -($pitch * ($cols - 1) / 2.0)
+local $ystart = -($pitch * ($rows - 1) / 2.0)
+for $r = 0 to $rows - 1
+	for $c = 0 to $cols - 1
+		set $cx = $xstart + $c * $pitch
+		set $cy = $ystart + $r * $pitch
+		MoveStageX $cx
+		MoveStageY $cy
+		Include meta_1.gwl
+		MoveStageX -$cx
+		MoveStageY -$cy
+	end
+end
+ZOffset 0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

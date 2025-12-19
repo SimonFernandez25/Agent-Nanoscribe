@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-12-17T13:00:54.145887",
+  "node_name": "meta_gwl_generator",
+  "content": "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n% Unique Meta-Atom (Cylinder)\n% Objective: 63x\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\nvar $objective = 63\nlocal $height = 5.0\nlocal $radius = 1.0\nlocal $voxel_lateral = 0.1\nlocal $axial_step = 0.3\nlocal $axial_overlap = 0.5\nlocal $dz = $axial_step * (1 - $axial_overlap)\nlocal $slices = ceil($height / $dz)\nlocal $hatch = $voxel_lateral\n\nXOffset 0\nYOffset 0\nZOffset 0\nPowerScaling 0.6\nLaserPower 40\nScanSpeed 100\nLineNumber 1\n\nlocal $slice = 0\nlocal $theta = 0\nlocal $angle_step = 10\n\nfor $slice = 0 to $slices - 1\n    if $slice > 0\n        AddZOffset $dz\n    end\n    for $theta = 0 to 360 step $angle_step\n        set $x = $radius * cos($theta * 3.1415926 / 180)\n        set $y = $radius * sin($theta * 3.1415926 / 180)\n        $x $y 0\n        Write\n    end\nend\n\nZOffset 0\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n% End of file\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",
+  "metadata": {
+    "atom_id": 1,
+    "filename": "meta_1.gwl",
+    "elapsed_time_sec": 6.1443421840667725,
+    "file_size_bytes": 1060,
+    "atom_spec": {
+      "id": 1,
+      "shape": "cylinder",
+      "height_um": 5.0,
+      "radius_um": 1.0
+    }
+  }
+}

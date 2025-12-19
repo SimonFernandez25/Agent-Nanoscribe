@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-12-17T12:19:55.889443",
+  "node_name": "master_gwl_builder",
+  "content": "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n% Array of Cylinders\n% Objective: 63x\n% Each cylinder: height 5 µm, radius 1 µm\n% Center-to-center spacing: 5 µm\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\nvar $objective = 63\nXOffset 0\nYOffset 0\nZOffset 0\nPowerScaling 0.6\nLaserPower 40\nScanSpeed 100\nFindInterfaceAt 0.5\nLineNumber 1\nlocal $rows = 5\nlocal $cols = 5\nlocal $pitch = 5.0\nlocal $xstart = -($pitch * ($cols - 1) / 2.0)\nlocal $ystart = -($pitch * ($rows - 1) / 2.0)\nfor $r = 0 to $rows - 1\n\tfor $c = 0 to $cols - 1\n\t\tset $cx = $xstart + $c * $pitch\n\t\tset $cy = $ystart + $r * $pitch\n\t\tMoveStageX $cx\n\t\tMoveStageY $cy\n\t\tInclude meta_1.gwl\n\t\tMoveStageX -$cx\n\t\tMoveStageY -$cy\n\tend\nend\nZOffset 0\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n% End of file\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",
+  "metadata": {
+    "filename": "main_array.gwl",
+    "elapsed_time_sec": 6.675524950027466,
+    "file_size_bytes": 936,
+    "array_config": {
+      "rows": 1,
+      "cols": 1,
+      "spacing_um": 5.0
+    }
+  }
+}

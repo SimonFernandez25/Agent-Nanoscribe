@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-12-17T12:19:56.694422",
+  "node_name": "final_metrics",
+  "content": {
+    "total_runtime_sec": 29.196,
+    "input_tokens": 32,
+    "output_tokens": 329,
+    "total_tokens": 361
+  },
+  "metadata": {}
+}
