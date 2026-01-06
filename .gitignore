@@ -1,8 +1,11 @@
-node_modules/
-.env
-.env.*
+# Ignore sensitive files
+Docs/
+Outputs/
+context_experiment_results/
+system_prompt_test/
+Manufacturing Evals/test_*/
+
+# Python
 __pycache__/
 *.pyc
-venv/
-.venv/
-.DS_Store
+.env
